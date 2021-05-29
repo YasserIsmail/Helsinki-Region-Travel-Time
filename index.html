@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="Data/travel_time.js"></script>
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+            margin: 0%;
+            padding: 0%;
+            font-family: "Lato", sans-serif;
+        }
+        #mapid {
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+        }
+        .border {
+            display: block;
+            width: 25px;
+            height: 25px;
+        }
+        .Legend{
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            width: auto;
+            height: auto;
+            z-index: 999999;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: rgba(255,255,255,0.7);
+        }
+        .heading{
+            position: absolute;
+            /* top: 2.5%; */
+            right: 0%;
+            width: auto;
+            height: auto;
+            z-index: 999999;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: rgba(255,255,255,0.7);
+        }
+        /* .leaflet-right{
+            display: none;
+        } */
+        .choose_mode{
+            position: absolute;
+            top: 40%;
+            bottom: 40%;
+            left: 0%;
+            width: 75px;
+            height: 75px;
+            z-index: 999999;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: rgba(255,255,255,0.7);
+            border-radius: 100%;
+            border-top-left-radius: 0%;
+            border-bottom-left-radius: 0%;
+            cursor: pointer;
+        }
+        .choose_mode:hover{
+            background-image: linear-gradient(to bottom right, rgba(255,255,255,0.7), #a3b1f548);
+        }
+        .btn{
+            border-radius: 100%;
+            border-top-left-radius: 0%;
+            border-bottom-left-radius: 0%;
+        }
+        .form-select{
+            outline: none !important;
+            border: 0px solid #ccc;
+        }
+        .form-select::-webkit-scrollbar-track{
+            border-radius: 10px;
+            background-color: #F5F5F5;
+            
+        }
+        .form-select::-webkit-scrollbar{
+            width: 10px;
+            background-color: #F5F5F5;
+            border-radius: 10px;
+        }
+        .form-select::-webkit-scrollbar-thumb{
+            border-radius: 10px;
+            background-color: #555555;
+        }
+        #sign{
+            position: absolute;
+            bottom: 0%;
+            z-index: 999999;
+        }
+    </style>
+</head>
+<body>
+    <div id="mapid"></div>
+    <div class="Legend p-2 m-3 mb-4">
+        <h6 class="">Legend</h6>
+        <p style="font-size: 14px;" class="m-0 pl-0">Time</p>
+        <div class="row m-0">
+            <i style="background-color: #800026;" class="border border-0"></i>
+            <p id="seventh" style="font-size: 14px;" class="m-0 pl-2">66-76</p>
+        </div>
+        <div class="row m-0">
+            <i style="background-color: #BD0026;" class="border border-0"></i>
+            <p id="sixth" style="font-size: 14px;" class="m-0 pl-2">55-65</p>
+        </div>
+        <div class="row m-0">
+            <i style="background-color: #E31A1C;" class="border border-0"></i>
+            <p id="fifth" style="font-size: 14px;" class="m-0 pl-2">44-54</p>
+        </div>
+        <div class="row m-0">
+            <i style="background-color: #FC4E2A;" class="border border-0"></i>
+            <p id="fourth" style="font-size: 14px;" class="m-0 pl-2">33-43</p>
+        </div>
+        <div class="row m-0">
+            <i style="background-color: #FD8D3C;" class="border border-0"></i>
+            <p id="third" style="font-size: 14px;" class="m-0 pl-2">22-32</p>
+        </div>
+        <div class="row m-0">
+            <i style="background-color: #FEB24C;" class="border border-0"></i>
+            <p id="second" style="font-size: 14px;" class="m-0 pl-2">11-21</p>
+        </div>
+        <div class="row m-0">
+            <i style="background-color: #FED976;" class="border border-0"></i>
+            <p id="first" style="font-size: 14px;" class="m-0 pl-2">0-10</p>
+        </div>
+        <div class="row m-0 mt-2">
+            <!-- <i style="background-color: #FED976;" class="border border-0"></i> -->
+            <img src="location.png" width="25px" height="25px" alt="">
+            <p style="font-size: 14px;" class="m-0 pl-2">Destination</p>
+        </div>
+    </div>
+    <div class="heading p-2 m-3">
+        <p class="font-weight-bold m-2">Helsinki Region-Travel Time Matrix 2015</p>
+        <p style="font-size: 16px;" class="text-left m-2">Mode | <span id="mode">Private car in midday traffic</span></p>
+        <p style="font-size: 14px;" class="text-left m-2">The Time to Destination <span id="time">000</span></p>
+        <p style="font-size: 14px;" class="text-left m-2">The Distance to Destination <span id="distance">000</span></p>
+    </div>
+
+    <div class="dropdown dropright">
+
+    </div>
+    <div  class="choose_mode p-0 dropdown dropright" data-toggle="tooltip" data-placement="right" title="Mode Transportation">
+        <button style="height: 100%;" type="button" class="btn" data-toggle="dropdown">
+            <img src="delivery.png" width="45px" height="45px" alt="">
+        </button>
+        <div class="dropdown-menu pt-1 pb-1">
+            <div class="dropdown-header">Select a transportation mode</div>
+            <select  class="form-select" multiple aria-label="multiple select example" name="selection_box" id="box">
+                <option onclick="change_mode()" class="dropdown-item" value="walk_t">walking</option>
+                <option onclick="change_mode()" class="dropdown-item" value="pt_r_tt">public transportation(R)</option>
+                <option onclick="change_mode()" class="dropdown-item" value="pt_m_tt">public transportation(M)</option>
+                <option onclick="change_mode()" class="dropdown-item" value="car_r_t">private car(R)</option>
+                <option onclick="change_mode()" class="dropdown-item" value="car_m_t">private car(M)</option>
+            </select>
+        </div>
+    </div>
+    <p id="sign" class="m-1" style="font-size: 16px;"><a style="text-decoration: none;" href="https://github.com/YasserIsmail">YasserIsmail</a> © 2021</p>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script src="js/MapSetting.js"></script>
+</html>
+
