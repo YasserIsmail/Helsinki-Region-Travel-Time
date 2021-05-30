@@ -1,10 +1,3 @@
-var req = $.ajax({
-    type: "GET",
-    url: 'Data/data.geojson',
-    async: false
-}).responseText;
-var json_data = JSON.parse(req);
-
 var mymap = L.map('mapid').setView([60.3,24.81], 12);
 L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",{ "attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false }).addTo(mymap);
 var mood_values=[]
