@@ -7,10 +7,12 @@
     <link rel="icon" href="icon.svg">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Leaflet.Basemaps-main/L.Control.Basemaps.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="Leaflet.Basemaps-main/L.Control.Basemaps-min.js"></script>
     <title>Helsinki Region-Travel Time Matrix 2015</title>
     <style>
         body{
@@ -103,8 +105,13 @@
             position: absolute;
             bottom: 0%;
             z-index: 999;
-            text-shadow: 0 0 3px #ffffff;
             display: none;
+            margin: 0;
+            padding: .5px;
+            padding-left: 3px;
+            padding-right: 3px;
+            font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+            background: rgba(255, 255, 255, 0.7);
         }
         #loader { 
             border: 12px solid #f3f3f3; 
@@ -128,6 +135,9 @@
             left: 0; 
             right: 0; 
             margin: auto;
+        }
+        div.basemap {
+            margin-bottom: 9px;
         }
 
     </style>
@@ -197,7 +207,7 @@
             </select>
         </div>
     </div>
-    <p id="sign" class="m-1" style="font-size: 16px;"><a style="text-decoration: none;color: #212529;" href="https://github.com/YasserIsmail">YasserIsmail</a> © 2021</p>
+    <p id="sign"><a style="color: #0078A8;" href="">YasserIsmail</a> © 2021 </p>
     <!-- <div id="loader" class="spinner text-center" style="width: 84px;"> 
         <div class="spinner-border text-danger" role="status"></div>
         <strong class=" ">Loading...</strong>
