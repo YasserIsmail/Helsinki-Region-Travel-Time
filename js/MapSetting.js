@@ -105,7 +105,23 @@ function change_mode(){
             layer.bringToFront();
         }
         document.getElementById('time').innerHTML = layer.feature.properties[mood_name] +' Minute'
-        document.getElementById('distance').innerHTML = layer.feature.properties[mood_name] +' Meter'
+        if( mood_name==='walk_t'){
+            document.getElementById('distance').innerHTML = layer.feature.properties['walk_d'] +' Meter'
+        }
+        if( mood_name==='pt_r_tt'){
+            document.getElementById('distance').innerHTML = layer.feature.properties['pt_r_d'] +' Meter'
+        }
+        if( mood_name==='pt_m_tt'){
+            document.getElementById('distance').innerHTML = layer.feature.properties['pt_m_d'] +' Meter'
+        }
+        if( mood_name==='car_r_t'){
+            document.getElementById('distance').innerHTML = layer.feature.properties['car_r_d'] +' Meter'
+        }
+        if( mood_name==='car_m_t'){
+            document.getElementById('distance').innerHTML = layer.feature.properties['car_m_d'] +' Meter'
+        }
+    
+        // document.getElementById('distance').innerHTML = layer.feature.properties[mood_name] +' Meter'
     }
     function onEachFeature(feature, layer) {
         layer.on({
