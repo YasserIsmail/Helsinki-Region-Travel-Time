@@ -39,9 +39,10 @@
             right: 0%;
             width: auto;
             height: auto;
-            z-index: 999999;
+            z-index: 9999999;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             background-color: rgba(255,255,255,0.7);
+            display: none;
         }
         .heading{
             position: absolute;
@@ -49,9 +50,10 @@
             right: 0%;
             width: auto;
             height: auto;
-            z-index: 999999;
+            z-index: 9999999;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             background-color: rgba(255,255,255,0.7);
+            display: none;
         }
         /* .leaflet-right{
             display: none;
@@ -63,13 +65,14 @@
             left: 0%;
             width: 75px;
             height: 75px;
-            z-index: 999999;
+            z-index: 9999999;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             background-color: rgba(255,255,255,0.7);
             border-radius: 100%;
             border-top-left-radius: 0%;
             border-bottom-left-radius: 0%;
             cursor: pointer;
+            display: none;
         }
         .choose_mode:hover{
             background-image: linear-gradient(to bottom right, rgba(255,255,255,0.7), #a3b1f548);
@@ -100,7 +103,20 @@
         #sign{
             position: absolute;
             bottom: 0%;
-            z-index: 999999;
+            z-index: 999;
+            text-shadow: 0 0 3px #ffffff;
+            display: none;
+        }
+        .spinner{
+            position: absolute;
+            left: 48%;
+            right: 48%;
+            bottom: 60%;
+            top: 40%;
+            z-index: 99999;
+        }
+        #loader{
+            display: block;
         }
     </style>
 </head>
@@ -111,31 +127,31 @@
         <p style="font-size: 14px;" class="m-0 pl-0">Time</p>
         <div class="row m-0">
             <i style="background-color: #800026;" class="border border-0"></i>
-            <p id="seventh" style="font-size: 14px;" class="m-0 pl-2">66-76</p>
+            <p id="seventh" style="font-size: 14px;" class="m-0 pl-2">67 - 77</p>
         </div>
         <div class="row m-0">
             <i style="background-color: #BD0026;" class="border border-0"></i>
-            <p id="sixth" style="font-size: 14px;" class="m-0 pl-2">55-65</p>
+            <p id="sixth" style="font-size: 14px;" class="m-0 pl-2">56 - 66</p>
         </div>
         <div class="row m-0">
             <i style="background-color: #E31A1C;" class="border border-0"></i>
-            <p id="fifth" style="font-size: 14px;" class="m-0 pl-2">44-54</p>
+            <p id="fifth" style="font-size: 14px;" class="m-0 pl-2">45 - 55</p>
         </div>
         <div class="row m-0">
             <i style="background-color: #FC4E2A;" class="border border-0"></i>
-            <p id="fourth" style="font-size: 14px;" class="m-0 pl-2">33-43</p>
+            <p id="fourth" style="font-size: 14px;" class="m-0 pl-2">34 - 44</p>
         </div>
         <div class="row m-0">
             <i style="background-color: #FD8D3C;" class="border border-0"></i>
-            <p id="third" style="font-size: 14px;" class="m-0 pl-2">22-32</p>
+            <p id="third" style="font-size: 14px;" class="m-0 pl-2">23 - 33</p>
         </div>
         <div class="row m-0">
             <i style="background-color: #FEB24C;" class="border border-0"></i>
-            <p id="second" style="font-size: 14px;" class="m-0 pl-2">11-21</p>
+            <p id="second" style="font-size: 14px;" class="m-0 pl-2">12 - 22</p>
         </div>
         <div class="row m-0">
             <i style="background-color: #FED976;" class="border border-0"></i>
-            <p id="first" style="font-size: 14px;" class="m-0 pl-2">0-10</p>
+            <p id="first" style="font-size: 14px;" class="m-0 pl-2">1 - 11</p>
         </div>
         <div class="row m-0 mt-2">
             <!-- <i style="background-color: #FED976;" class="border border-0"></i> -->
@@ -164,12 +180,16 @@
                 <option onclick="change_mode()" class="dropdown-item" value="pt_r_tt">public transportation(R)</option>
                 <option onclick="change_mode()" class="dropdown-item" value="pt_m_tt">public transportation(M)</option>
                 <option onclick="change_mode()" class="dropdown-item" value="car_r_t">private car(R)</option>
-                <option onclick="change_mode()" class="dropdown-item" value="car_m_t">private car(M)</option>
+                <option onclick="change_mode()" class="dropdown-item" value="car_m_t" selected>private car(M)</option>
             </select>
         </div>
     </div>
-    <p id="sign" class="m-1" style="font-size: 16px;"><a style="text-decoration: none;" href="https://github.com/YasserIsmail">YasserIsmail</a> © 2021</p>
-    <script>
+    <p id="sign" class="m-1" style="font-size: 16px;"><a style="text-decoration: none;color: #212529;" href="https://github.com/YasserIsmail">YasserIsmail</a> © 2021</p>
+    <div id="loader" class="spinner text-center" style="width: 84px;"> 
+        <div class="spinner-border text-danger" role="status"></div>
+        <strong class=" ">Loading...</strong>
+    </div>
+        <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });

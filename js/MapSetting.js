@@ -157,3 +157,24 @@ function change_mode(){
         document.getElementById('mode').innerHTML = "Private car in midday traffic"
     }
 }
+
+// Loader
+
+$(document).ready(function () {
+    $(".Legend").css("display","block");
+    $(".heading").css("display","block");
+    $(".choose_mode").css("display","block");
+    $("#sign").css("display","block");
+    $('#loader')
+        .hide() 
+        .ajaxStart(function () {
+            $(this).show();
+            
+        })
+        .ajaxStop(function () {
+            $(this).hide();
+            $('.Legend').show;
+        });
+    $('body').css("display","block")
+
+});
