@@ -106,21 +106,34 @@
             text-shadow: 0 0 3px #ffffff;
             display: none;
         }
-        .spinner{
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
+        #loader { 
+            border: 9px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 9px solid #df4759; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 1s linear infinite; 
+        } 
+          
+        @keyframes spin { 
+            100% { 
+                transform: rotate(360deg); 
+            } 
+        } 
+          
+        .center { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
             margin: auto;
-            z-index: 99999;
         }
-        #loader{
-            display: block;
-        }
+
     </style>
 </head>
 <body>
+    <div id="loader" class="center"></div>
     <div id="mapid"></div>
     <div class="Legend p-2 m-3 mb-4">
         <h6 class="">Legend</h6>
@@ -185,10 +198,10 @@
         </div>
     </div>
     <p id="sign" class="m-1" style="font-size: 16px;"><a style="text-decoration: none;color: #212529;" href="https://github.com/YasserIsmail">YasserIsmail</a> © 2021</p>
-    <div id="loader" class="spinner text-center" style="width: 84px;"> 
+    <!-- <div id="loader" class="spinner text-center" style="width: 84px;"> 
         <div class="spinner-border text-danger" role="status"></div>
         <strong class=" ">Loading...</strong>
-    </div>
+    </div> -->
         <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
