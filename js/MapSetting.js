@@ -6,7 +6,7 @@ var basemaps = [
 ]
 mymap.addControl(L.control.basemaps({
     basemaps: basemaps,
-    position: 'bottomleft',
+    position: 'bottomleft'
 }));
 
 var mood_values=[]
@@ -79,20 +79,16 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight,
         click: zoomToFeature
     });
-    // layer.bindTooltip("time: " + feature.properties['car_m_t']);
     
 }
 L.marker([60.311723398304366,24.816556631694471]).addTo(mymap);
 geojson = L.geoJson(json_data, { style: style, onEachFeature: onEachFeature }).addTo(mymap);
 
-// geojson.setStyle({fillColor: "#4B1BDE"});
 
 function change_mode(){
     let x = document.getElementById("box").selectedIndex;
     let mood_name = document.getElementsByTagName("option")[x].value;
-    // alert(mood_name)
     interval = classification(get_mood_values(mood_name),7)
-    // console.log(interval)
     function style(feature) {
         return {
             fillColor: getColor(feature.properties[mood_name]),
@@ -130,7 +126,6 @@ function change_mode(){
             document.getElementById('distance').innerHTML = layer.feature.properties['car_m_d'] +' Meter'
         }
     
-        // document.getElementById('distance').innerHTML = layer.feature.properties[mood_name] +' Meter'
     }
     function onEachFeature(feature, layer) {
         layer.on({
@@ -138,7 +133,6 @@ function change_mode(){
             mouseout: resetHighlight,
             click: zoomToFeature
         });
-        // layer.bindTooltip("time: " + feature.properties['car_m_t']);
         
     }
     mymap.removeLayer(geojson)
@@ -168,7 +162,6 @@ function change_mode(){
 }
 
 // Loader
-
 $(document).ready(function () {
     $(".Legend").css("display","block");
     $(".heading").css("display","block");
