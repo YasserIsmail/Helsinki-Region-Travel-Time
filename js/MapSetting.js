@@ -110,20 +110,22 @@ function change_mode(){
             layer.bringToFront();
         }
         document.getElementById('time').innerHTML = layer.feature.properties[mood_name] +' Minute'
-        if( mood_name==='walk_t'){
-            document.getElementById('distance').innerHTML = layer.feature.properties['walk_d'] +' Meter'
-        }
-        if( mood_name==='pt_r_tt'){
-            document.getElementById('distance').innerHTML = layer.feature.properties['pt_r_d'] +' Meter'
-        }
-        if( mood_name==='pt_m_tt'){
-            document.getElementById('distance').innerHTML = layer.feature.properties['pt_m_d'] +' Meter'
-        }
-        if( mood_name==='car_r_t'){
-            document.getElementById('distance').innerHTML = layer.feature.properties['car_r_d'] +' Meter'
-        }
-        if( mood_name==='car_m_t'){
-            document.getElementById('distance').innerHTML = layer.feature.properties['car_m_d'] +' Meter'
+        switch(mood_name){
+            case 'walk_t':
+                document.getElementById('distance').innerHTML = layer.feature.properties['walk_d'] +' Meter'
+                break;
+            case 'pt_r_tt':
+                document.getElementById('distance').innerHTML = layer.feature.properties['pt_r_tt'] +' Meter'
+                break;
+            case 'pt_m_tt':
+                document.getElementById('distance').innerHTML = layer.feature.properties['pt_r_d'] +' Meter'
+                break;
+            case 'car_r_t':
+                document.getElementById('distance').innerHTML = layer.feature.properties['car_r_t'] +' Meter'
+                break;
+            case 'car_m_t':
+                document.getElementById('distance').innerHTML = layer.feature.properties['car_m_t'] +' Meter'
+                break;
         }
     
     }
@@ -144,20 +146,22 @@ function change_mode(){
     document.getElementById('fifth').innerHTML=interval[4]+1+" - "+interval[5]
     document.getElementById('sixth').innerHTML=interval[5]+1+" - "+interval[6]
     document.getElementById('seventh').innerHTML=interval[6]+1+" - "+interval[7]
-    if( mood_name==='walk_t'){
-        document.getElementById('mode').innerHTML = "Walking"
-    }
-    if( mood_name==='pt_r_tt'){
-        document.getElementById('mode').innerHTML = "Public transportation in rush hour traffic"
-    }
-    if( mood_name==='pt_m_tt'){
-        document.getElementById('mode').innerHTML = "Public transportation in midday traffic"
-    }
-    if( mood_name==='car_r_t'){
-        document.getElementById('mode').innerHTML = "Private car in rush hour traffic"
-    }
-    if( mood_name==='car_m_t'){
-        document.getElementById('mode').innerHTML = "Private car in midday traffic"
+    switch(mood_name){
+        case 'walk_t':
+            document.getElementById('mode').innerHTML = "Walking"
+            break
+        case 'pt_r_tt':
+            document.getElementById('mode').innerHTML = "Public transportation in rush hour traffic"
+            break
+        case 'pt_m_tt':
+            document.getElementById('mode').innerHTML = "Public transportation in midday traffic"
+            break
+        case 'car_r_t':
+            document.getElementById('mode').innerHTML = "Private car in rush hour traffic"
+            break
+        case 'car_m_t':
+            document.getElementById('mode').innerHTML = "Private car in midday traffic"
+            break
     }
 }
 
