@@ -10,6 +10,6 @@ In this project I did make an interactive choropleth maps for travel time in Hel
 #
 You can change mode of transportation and map will change based on it,note the map and compare it with the previous map 
 
-![Change Mode](image/image.jpg)
+![Change Mode](image/walking.jpg)
 
 #
