@@ -6,17 +6,17 @@ In this project I did make interactive choropleth maps for travel time in Helsin
 
 ![Project's Image](image/image.jpg)
 ### With map:-
-* You can change mode of transportation and map will change based on it,note the map and compare it with the previous map 
+* **You can change mode of transportation and map will change based on it,note the map and compare it with the previous map**
 
 ![Change Mode](image/walking.jpg)
 
 #
-* The box in the top right has data for selected cell
+* **The box in the top right has data for selected cell**
 
 ![TopRight box](image/tooltip.jpg)
 
 #
-* you can change basemap
+* **you can change basemap**
 
 ![TopRight box](image/change.jpg)
 
